@@ -18,14 +18,10 @@ namespace Microwave.Classes.Boundary
         
         public void StartAlarmBuz()
         {
-            if (!isOn)
-            { 
-                myOutput.OutputLine("Buz Buz Buz");
+            if (isOn) return;
+            myOutput.OutputLine("Buz Buz Buz");
 
-                isOn = true;
-                    
-                
-            }
+            isOn = true;
         }
 
         
