@@ -14,12 +14,18 @@ namespace Microwave.Classes.Boundary
         }
 
         
-        public void StartAlarmBuz()
+        public void StartBuz(int numOfbuz)
         {
             if (!isOn)
             {
-                myOutput.OutputLine("Buz Buz Buz");
-                isOn = true;
+                for (int i = 1; i < numOfbuz;)
+                { 
+                    myOutput.OutputLine("Buz");
+                    isOn = true;
+                    TimeSpan.FromMilliseconds(1000);
+
+                }
+                
             }
         }
 

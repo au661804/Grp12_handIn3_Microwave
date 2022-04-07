@@ -2,7 +2,7 @@
 {
     public interface IBuzzer
     {
-        void StartAlarmBuz();
+        void StartBuz(int numOfBuz);
         
     }
 }
