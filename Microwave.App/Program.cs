@@ -12,6 +12,8 @@ namespace Microwave.App
             Button powerButton = new Button();
             Button timeButton = new Button();
 
+            //jjj
+
             Door door = new Door();
 
             Output output = new Output();
