@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.Serialization;
 using Microwave.Classes.Interfaces;
 
 namespace Microwave.Classes.Controllers
