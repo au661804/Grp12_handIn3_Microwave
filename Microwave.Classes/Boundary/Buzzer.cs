@@ -5,14 +5,24 @@ namespace Microwave.Classes.Boundary
 {
     public class Buzzer: IBuzzer
     {
-        public void StartBuz()
+        private IOutput myOutput;
+        private bool isOn = false;
+
+        public Buzzer(IOutput output)
         {
-            Console.WriteLine("*Buzzing!*");
+            myOutput = output;
         }
 
-        public void StopBuz()
+        
+        public void StartAlarmBuz()
         {
-            throw new System.NotImplementedException();
+            if (!isOn)
+            {
+                myOutput.OutputLine("Buz Buz Buz");
+                isOn = true;
+            }
         }
+
+        
     }
 }
