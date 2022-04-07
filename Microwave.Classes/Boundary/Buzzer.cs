@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using Microwave.Classes.Interfaces;
 
 namespace Microwave.Classes.Boundary
@@ -19,7 +18,7 @@ namespace Microwave.Classes.Boundary
         public void StartAlarmBuz()
         {
             if (isOn) return;
-            myOutput.OutputLine("Buz Buz Buz");
+            myOutput.OutputLine($"Buz Buz Buz");
 
             isOn = true;
         }

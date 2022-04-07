@@ -151,6 +151,7 @@ namespace Microwave.Classes.Controllers
                     myDisplay.Clear();
                     myLight.TurnOff();
                     mybuzzer.StartAlarmBuz();
+                    
                     myState = States.READY;
                     break;
             }
