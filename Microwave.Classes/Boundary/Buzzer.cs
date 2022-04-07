@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Linq;
 using Microwave.Classes.Interfaces;
-using System.Timers;
 
 namespace Microwave.Classes.Boundary
 {
@@ -16,20 +16,14 @@ namespace Microwave.Classes.Boundary
         }
 
         
-        public void StartBuz(int numOfbuz)
+        public void StartAlarmBuz()
         {
-            TimeSpan k = TimeSpan.FromMilliseconds(1000); 
             if (!isOn)
-            {
-                for (int i = 1; i < numOfbuz;)
-                { 
+            { 
+                myOutput.OutputLine("Buz Buz Buz");
+
+                isOn = true;
                     
-                    myOutput.OutputLine("Buz");
-                    k.Milliseconds = 1000;
-                    isOn = true;
-                    
-                    
-                }
                 
             }
         }
