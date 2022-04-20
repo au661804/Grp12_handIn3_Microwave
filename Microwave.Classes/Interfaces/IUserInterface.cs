@@ -12,6 +12,8 @@ namespace Microwave.Classes.Interfaces
         void OnTimePressed(object sender, EventArgs e);
         void OnStartCancelPressed(object sender, EventArgs e);
 
+        //minus 10 sekunder
+
         void OnDoorOpened(object sender, EventArgs e);
         void OnDoorClosed(object sender, EventArgs e);
 

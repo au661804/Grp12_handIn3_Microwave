@@ -27,18 +27,28 @@ namespace Microwave.Classes.Boundary
             TimeRemaining = time;
             timer.Enabled = true;
         }
+        public void set(int time)
+        {
+            if (time <= 0)
+            {
+                TimeRemaining = 0;
+                Expire();
+            }
+            TimeRemaining = time;
+        }//sådan at vi kan ændre tiden mens timeren kører
 
         public void Stop()
         {
             timer.Enabled = false;
         }
+        
 
         private void Expire()
         {
             timer.Enabled = false;
             Expired?.Invoke(this, System.EventArgs.Empty);
         }
-
+         
         private void OnTimerEvent(object sender, System.Timers.ElapsedEventArgs args)
         {
             // One tick has passed

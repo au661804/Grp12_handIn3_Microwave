@@ -8,7 +8,11 @@ namespace Microwave.Classes.Controllers
     {
         private enum States
         {
-            READY, SETPOWER, SETTIME, COOKING, DOOROPEN
+            READY, 
+            SETPOWER, 
+            SETTIME, 
+            COOKING, 
+            DOOROPEN
         }
 
         private States myState = States.READY;
@@ -32,6 +36,7 @@ namespace Microwave.Classes.Controllers
             powerButton.Pressed += new EventHandler(OnPowerPressed);
             timeButton.Pressed += new EventHandler(OnTimePressed);
             startCancelButton.Pressed += new EventHandler(OnStartCancelPressed);
+            //måske en event, hvis vi laver en -10 sekunder.
 
             door.Closed += new EventHandler(OnDoorClosed);
             door.Opened += new EventHandler(OnDoorOpened);
@@ -74,8 +79,12 @@ namespace Microwave.Classes.Controllers
                     time += 1;
                     myDisplay.ShowTime(time, 0);
                     break;
+                case States.COOKING:
+                    myCooker.OffsetTime(10);
+                    break; // der tilføjes 10 sek, hvis den allerede er i gang. 
             }
         }
+        // måske lave en funktion der forkorter tiden også.. 
 
         public void OnStartCancelPressed(object sender, EventArgs e)
         {
