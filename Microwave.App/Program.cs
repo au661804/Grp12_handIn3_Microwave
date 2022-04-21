@@ -18,7 +18,7 @@ namespace Microwave.App
 
             Display display = new Display(output);
 
-            PowerTube powerTube = new PowerTube(output);
+            PowerTube powerTube = new PowerTube(output,700); // opgaven siger det skal være 700
 
             Light light = new Light(output);
 
