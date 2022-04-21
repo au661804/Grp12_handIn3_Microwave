@@ -35,7 +35,7 @@ namespace Microwave.Test.Unit
             uut.TimerTick += (sender, args) => pause.Set();
             uut.Start(2);
 
-            // wait shorter than a tick, shouldn't come
+            // wait shorter than a tick, shouldn't com
             Assert.That(!pause.WaitOne(900));
         }
 
