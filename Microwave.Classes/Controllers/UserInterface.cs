@@ -56,7 +56,7 @@ namespace Microwave.Classes.Controllers
                     myState = States.SETPOWER;
                     break;
                 case States.SETPOWER:
-                    powerLevel = (powerLevel >= 700 ? 50 : powerLevel+50);
+                    powerLevel = (powerLevel >= myCooker.MaxPower ? 50 : powerLevel+50); // bare ændret 700 om til myCooker.MaxPower
                     myDisplay.ShowPower(powerLevel);
                     break;
             }
@@ -74,6 +74,7 @@ namespace Microwave.Classes.Controllers
                     time += 1;
                     myDisplay.ShowTime(time, 0);
                     break;
+
             }
         }
 
