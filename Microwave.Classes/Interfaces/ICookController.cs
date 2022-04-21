@@ -11,7 +11,9 @@ namespace Microwave.Classes.Interfaces
         void StartCooking(int power, int time);
         void ChangeTime(int time);
 
-        void OffsetTime(int timeOffset);
+        void PlusTimer(int timeOffset);
+
+        void MinusTimer(int timeOffset);
         void Stop();
     }
 }

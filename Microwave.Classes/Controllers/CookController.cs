@@ -73,10 +73,13 @@ namespace Microwave.Classes.Controllers
         {
             myTimer.set(time);
         } 
-        public void OffsetTime(int timeOffset)
+        public void PlusTimer(int timeOffset)
         {
             myTimer.set(myTimer.TimeRemaining + timeOffset);
         }
-
+        public void MinusTimer(int timeOffset)
+        {
+            myTimer.set(myTimer.TimeRemaining - timeOffset);
+        }
     }
 }
