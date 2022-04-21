@@ -82,6 +82,11 @@ namespace Microwave.Test.Unit
 
             powerTube.Received().TurnOff();
         }
+        [Test]
+        public void Cooking_time_increased()
+        {
+
+        }
 
     }
 }

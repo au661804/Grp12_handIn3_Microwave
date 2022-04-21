@@ -11,6 +11,7 @@ namespace Microwave.App
             Button startCancelButton = new Button();
             Button powerButton = new Button();
             Button timeButton = new Button();
+            Button AddTimeButton = new Button();
 
             Door door = new Door();
 
@@ -26,7 +27,7 @@ namespace Microwave.App
 
             CookController cooker = new CookController(timer, display, powerTube);
 
-            UserInterface ui = new UserInterface(powerButton, timeButton, startCancelButton, door, display, light, cooker);
+            UserInterface ui = new UserInterface(powerButton, timeButton, startCancelButton, AddTimeButton, door, display, light, cooker);
 
             // Finish the double association
             cooker.UI = ui;
@@ -39,12 +40,35 @@ namespace Microwave.App
 
             startCancelButton.Press();
 
+            AddTimeButton.Press();
+
+            do
+            {
+                string input;
+                System.Console.WriteLine("Press A to add 10 sec");
+                input = Console.ReadLine();
+                if (string.IsNullOrEmpty(input)) continue;
+
+                switch (input[0])
+                {
+                    case 'a':
+                        AddTimeButton.Press();
+                        break;
+
+                    case 'A':
+                        AddTimeButton.Press();
+                        break;
+                    case 'E':
+                        break;
+
+                }
+            } while (true);
+
             // The simple sequence should now run
 
-            System.Console.WriteLine("When you press enter, the program will stop");
+            //System.Console.WriteLine("When you press enter, the program will stop");
             // Wait for input
-
-            System.Console.ReadLine();
+        
         }
     }
 }
