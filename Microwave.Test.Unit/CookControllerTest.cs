@@ -15,6 +15,7 @@ namespace Microwave.Test.Unit
         private ITimer timer;
         private IDisplay display;
         private IPowerTube powerTube;
+        
 
         [SetUp]
         public void Setup()
@@ -23,6 +24,8 @@ namespace Microwave.Test.Unit
             timer = Substitute.For<ITimer>();
             display = Substitute.For<IDisplay>();
             powerTube = Substitute.For<IPowerTube>();
+
+
 
             uut = new CookController(timer, display, powerTube, ui);
         }
@@ -82,11 +85,8 @@ namespace Microwave.Test.Unit
 
             powerTube.Received().TurnOff();
         }
-        [Test]
-        public void Cooking_time_increased()
-        {
-
-        }
+        
+        
 
     }
 }

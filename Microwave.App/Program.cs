@@ -41,14 +41,12 @@ namespace Microwave.App
 
             startCancelButton.Press();
 
-            AddTimeButton.Press();
-
-            subtractTimeButton.Press();
+         
 
             do
             {
                 string input;
-                System.Console.WriteLine("Press a to add 10 sec");
+                 System.Console.WriteLine("Press a to add 10 sec");
                 System.Console.WriteLine("Press s to subtract 10 sec");
                 input = Console.ReadLine();
                 if (string.IsNullOrEmpty(input)) continue;
