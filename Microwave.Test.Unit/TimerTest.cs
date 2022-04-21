@@ -25,7 +25,7 @@ namespace Microwave.Test.Unit
 
             // wait for a tick, but no longer
             Assert.That(pause.WaitOne(1100));
-        } 
+        }  
 
         [Test]
         public void Start_TimerTick_LongEnough()
