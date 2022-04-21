@@ -19,7 +19,7 @@ namespace Microwave.Test.Unit
         }
 
         [Test]
-        public void TurnOn_WasOff_CorrectOutput()
+        public void TurnOn_WasOn_CorrectOutput()
         {
             uut.StartAlarmBuz();
             output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains("Buz Buz Buz")));
