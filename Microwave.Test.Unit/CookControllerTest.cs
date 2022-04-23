@@ -86,14 +86,14 @@ namespace Microwave.Test.Unit
             powerTube.Received().TurnOff();
         }
         [Test]
-        public void Cooking_ChangeTime()
+        public void Cooking_ChangeTime_timer_received_correct_number()
         {
             uut.StartCooking(50, 60);
             uut.ChangeTime(30);
-
-            // Verify that timer has been updated
             timer.Received().set(30);
         }
+
+
 
 
 
