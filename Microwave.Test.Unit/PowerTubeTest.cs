@@ -9,14 +9,16 @@ namespace Microwave.Test.Unit
     [TestFixture]
     public class PowerTubeTest
     {
-        private PowerTube uut;
+        private PowerTube uut,uut_600,uut_1000;
         private IOutput output;
 
         [SetUp]
         public void Setup()
         {
             output = Substitute.For<IOutput>();
-            uut = new PowerTube(output);
+            uut = new PowerTube(output, 700);
+            uut_600 = new PowerTube(output, 600);
+            uut_1000 = new PowerTube(output, 1000);
         }
 
         [TestCase(1)]
@@ -60,6 +62,13 @@ namespace Microwave.Test.Unit
         {
             uut.TurnOn(50);
             Assert.Throws<System.ApplicationException>(() => uut.TurnOn(60));
+        }
+        [Test]
+        public void MaxPower()
+        {
+            Assert.AreEqual(600, uut_600.MaxPower);
+            Assert.AreEqual(700, uut.MaxPower);
+            Assert.AreEqual(1000, uut_1000.MaxPower);
         }
     }
 }
