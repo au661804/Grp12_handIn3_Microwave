@@ -207,7 +207,7 @@ namespace Microwave.Test.Unit
             // Should call with correct values
             startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
 
-            cooker.Received(1).StartCooking(100, 120);
+            cooker.Received(1).StartCooking(50,120);
         }
 
         [Test]
