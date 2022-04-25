@@ -147,5 +147,19 @@ namespace Microwave.Test.Unit
 
             Assert.That(uut.TimeRemaining, Is.EqualTo(5-ticks*1));
         }
+
+        [TestCase(-1)]
+        [TestCase(-2)]
+        [TestCase(-3)]
+        [TestCase(-4)]
+        public void Tick_Started_TimeRemainingNegative(int ticks)
+        {
+            uut.set(ticks);
+
+            Assert.That(uut.TimeRemaining, Is.EqualTo(0));
+
+            
+        }
+
     }
 }

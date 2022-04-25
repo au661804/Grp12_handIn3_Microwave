@@ -34,7 +34,12 @@ namespace Microwave.Classes.Boundary
                 TimeRemaining = 0;
                 Expire();
             }
-            TimeRemaining = time;
+            else
+            {
+                TimeRemaining = time;
+
+            }
+            
         }//sådan at vi kan ændre tiden mens timeren kører
 
         public void Stop()
