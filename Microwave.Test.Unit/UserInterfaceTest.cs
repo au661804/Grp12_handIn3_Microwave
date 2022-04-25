@@ -80,20 +80,12 @@ namespace Microwave.Test.Unit
             display.Received(1).ShowPower(Arg.Is<int>(100));
         }
 
-        [Test]
-        public void Ready_14PowerButton_PowerIs700()
-        {
-            for (int i = 1; i <= 14; i++)
-            {
-                powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
-            }
-            display.Received(1).ShowPower(Arg.Is<int>(700));
-        }
+      //Slettet test som raiser event power 14 gange
 
         [Test]
-        public void Ready_15PowerButton_PowerIs50Again()
+        public void Ready_23PowerButton_PowerIs50Again()
         {
-            for (int i = 1; i <= 15; i++)
+            for (int i = 1; i <= 23; i++)
             {
                 powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
             }
