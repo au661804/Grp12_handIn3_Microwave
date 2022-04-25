@@ -41,7 +41,7 @@ namespace Microwave.Test.Integration
 
             timer = new Timer();
             display = new Display(output);
-            powerTube = new PowerTube(output,700);
+            powerTube = new PowerTube(output);
 
             light = new Light(output);
 
