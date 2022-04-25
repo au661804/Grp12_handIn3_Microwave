@@ -9,7 +9,7 @@ namespace Microwave.Test.Unit
     [TestFixture]
     public class PowerTubeTest
     {
-        private PowerTube uut,uut_600,uut_1000;
+        private PowerTube uut, uut_600, uut_1000;
         private IOutput output;
 
         [SetUp]
@@ -64,7 +64,8 @@ namespace Microwave.Test.Unit
         [TestCase(500)]
         [TestCase(700)]
         [TestCase(1000)]
-
+        public void test_test_TES()
+        {}
        
 
     }
