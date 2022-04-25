@@ -56,7 +56,7 @@ namespace Microwave.Test.Unit
         }
 
         [Test]
-        public void TurnOn_WasOn_ThrowsException()
+        public void TurnOn_WasOn_ThrowsException()//
         {
             uut.TurnOn(50);
             Assert.Throws<System.ApplicationException>(() => uut.TurnOn(60));
