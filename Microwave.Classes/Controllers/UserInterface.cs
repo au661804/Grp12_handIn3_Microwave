@@ -10,15 +10,14 @@ namespace Microwave.Classes.Controllers
         {
             READY, SETPOWER, SETTIME, COOKING, DOOROPEN
         }
+        public int MaxPower { get; set; }
 
         private States myState = States.READY;
 
         private ICookController myCooker;
         private ILight myLight;
         private IDisplay myDisplay;
-        private IPowerTube mypowertube;
-
-        private int powerLevel;
+        
         private int time = 1;
 
         public UserInterface(
@@ -44,7 +43,7 @@ namespace Microwave.Classes.Controllers
 
         private void ResetValues()
         {
-            powerLevel = mypowertube.MaxPower;
+            MaxPower = 50;
             time = 1;
         }
 
@@ -53,12 +52,12 @@ namespace Microwave.Classes.Controllers
             switch (myState)
             {
                 case States.READY:
-                    myDisplay.ShowPower(powerLevel);
+                    myDisplay.ShowPower(MaxPower);
                     myState = States.SETPOWER;
                     break;
                 case States.SETPOWER:
-                    powerLevel = (powerLevel >= mypowertube.MaxPower ? 50 : powerLevel+50); // bare ændret 700 om til myCooker.MaxPower
-                    myDisplay.ShowPower(powerLevel);
+                   //(powerLevel >= MaxPower ? 50 : powerLevel+50); // bare ændret 700 om til myCooker.MaxPower
+                    myDisplay.ShowPower(MaxPower);
                     break;
             }
         }
@@ -90,7 +89,7 @@ namespace Microwave.Classes.Controllers
                     break;
                 case States.SETTIME:
                     myLight.TurnOn();
-                    myCooker.StartCooking(powerLevel, time*60);
+                    myCooker.StartCooking(MaxPower, time*60);
                     myState = States.COOKING;
                     break;
                 case States.COOKING:

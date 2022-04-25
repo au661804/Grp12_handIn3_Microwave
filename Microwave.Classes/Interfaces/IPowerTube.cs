@@ -12,6 +12,6 @@ namespace Microwave.Classes.Interfaces
 
         void TurnOff();
 
-        int MaxPower { get; }
+        
     }
 }
