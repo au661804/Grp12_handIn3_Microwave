@@ -14,6 +14,7 @@ namespace Microwave.Classes.Controllers
         private IDisplay myDisplay;
         private IPowerTube myPowerTube;
         private ITimer myTimer;
+        
 
         // public int MaxPower => MaxPower;
 
@@ -71,5 +72,6 @@ namespace Microwave.Classes.Controllers
                 myDisplay.ShowTime(remaining / 60, remaining % 60);
             }
         }
+
     }
 }
