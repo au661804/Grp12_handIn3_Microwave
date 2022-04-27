@@ -169,5 +169,7 @@ namespace Microwave.Test.Unit
             Assert.That(uut.TimeRemaining, Is.EqualTo(ticks));
         }
 
+       
+
     }
 }

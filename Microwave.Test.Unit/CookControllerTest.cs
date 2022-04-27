@@ -92,6 +92,35 @@ namespace Microwave.Test.Unit
             uut.ChangeTime(30);
             timer.Received().set(30);
         }
+        
+        [Test]
+        public void Changing_CookingTime_plus()
+        {
+            uut.StartCooking(50, 60);
+
+            uut.PlusTimer(10);
+
+            timer.Received(1).set(timer.TimeRemaining + 10);
+        }
+
+        [Test]
+        public void Changing_CookingTime_minus()
+        {
+            uut.StartCooking(50, 60);
+
+            uut.MinusTimer(10);
+
+            timer.Received(1).set(timer.TimeRemaining - 10);
+        }
+        [Test]
+        public void Changing_CookingTime_negative()
+        {
+            uut.StartCooking(50, 5);
+
+            uut.MinusTimer(10);
+
+            Assert.AreEqual(0, timer.TimeRemaining);
+        }
 
 
 
