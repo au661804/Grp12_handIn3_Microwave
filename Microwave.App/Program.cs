@@ -19,9 +19,10 @@ namespace Microwave.App
 
             Display display = new Display(output);
 
-            PowerTube powerTube = new PowerTube(output);
+            PowerTube powerTube = new PowerTube(output); // opgaven siger det skal være 700
 
             Light light = new Light(output);
+
 
             Buzzer buzzer = new Buzzer(output);
 
@@ -30,6 +31,8 @@ namespace Microwave.App
             CookController cooker = new CookController(timer, display, powerTube);
 
             UserInterface ui = new UserInterface(powerButton, timeButton, startCancelButton, door, display, light, cooker, buzzer);
+
+            ui.MaxPower = 700;
 
             // Finish the double association
             cooker.UI = ui;

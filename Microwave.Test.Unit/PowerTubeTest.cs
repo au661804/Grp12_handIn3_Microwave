@@ -9,7 +9,7 @@ namespace Microwave.Test.Unit
     [TestFixture]
     public class PowerTubeTest
     {
-        private PowerTube uut;
+        private PowerTube uut, uut_600, uut_1000;
         private IOutput output;
 
         [SetUp]
@@ -33,8 +33,8 @@ namespace Microwave.Test.Unit
         [TestCase(-5)]
         [TestCase(-1)]
         [TestCase(0)]
-        [TestCase(701)]
-        [TestCase(750)]
+        [TestCase(1101)]
+        [TestCase(1200)]
         public void TurnOn_WasOffOutOfRangePower_ThrowsException(int power)
         {
             Assert.Throws<System.ArgumentOutOfRangeException>(() => uut.TurnOn(power));
@@ -56,10 +56,14 @@ namespace Microwave.Test.Unit
         }
 
         [Test]
-        public void TurnOn_WasOn_ThrowsException()
+        public void TurnOn_WasOn_ThrowsException()//
         {
             uut.TurnOn(50);
             Assert.Throws<System.ApplicationException>(() => uut.TurnOn(60));
         }
+       
+        
+       
+
     }
 }
