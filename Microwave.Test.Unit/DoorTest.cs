@@ -13,7 +13,7 @@ namespace Microwave.Test.Unit
         {
             uut = new Door();    
         }
-
+        
         [Test]
         public void Open_NoSubscribers_NoThrow()
         {

@@ -15,6 +15,7 @@ namespace Microwave.Test.Unit
         private ITimer timer;
         private IDisplay display;
         private IPowerTube powerTube;
+        
 
         [SetUp]
         public void Setup()
@@ -23,6 +24,8 @@ namespace Microwave.Test.Unit
             timer = Substitute.For<ITimer>();
             display = Substitute.For<IDisplay>();
             powerTube = Substitute.For<IPowerTube>();
+
+
 
             uut = new CookController(timer, display, powerTube, ui);
         }
@@ -82,6 +85,47 @@ namespace Microwave.Test.Unit
 
             powerTube.Received().TurnOff();
         }
+        [Test]
+        public void Cooking_ChangeTime_timer_received_correct_number()
+        {
+            uut.StartCooking(50, 60);
+            uut.ChangeTime(30);
+            timer.Received().set(30);
+        }
+        
+        [Test]
+        public void Changing_CookingTime_plus()
+        {
+            uut.StartCooking(50, 60);
+
+            uut.PlusTimer(10);
+
+            timer.Received(1).set(timer.TimeRemaining + 10);
+        }
+
+        [Test]
+        public void Changing_CookingTime_minus()
+        {
+            uut.StartCooking(50, 60);
+
+            uut.MinusTimer(10);
+
+            timer.Received(1).set(timer.TimeRemaining - 10);
+        }
+        [Test]
+        public void Changing_CookingTime_negative()
+        {
+            uut.StartCooking(50, 5);
+
+            uut.MinusTimer(10);
+
+            Assert.AreEqual(0, timer.TimeRemaining);
+        }
+
+
+
+
+
 
     }
 }
