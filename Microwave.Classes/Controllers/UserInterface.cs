@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.Serialization;
 using Microwave.Classes.Interfaces;
 
 namespace Microwave.Classes.Controllers
@@ -14,6 +13,7 @@ namespace Microwave.Classes.Controllers
             COOKING, 
             DOOROPEN
         }
+        public int MaxPower { get; set; }
 
         private States myState = States.READY;
 
@@ -21,7 +21,10 @@ namespace Microwave.Classes.Controllers
         private ILight myLight;
         private IDisplay myDisplay;
 
+        private IBuzzer mybuzzer;
+
         private int powerLevel = 50;
+
         private int time = 1;
 
         public UserInterface(
@@ -33,7 +36,7 @@ namespace Microwave.Classes.Controllers
             IDoor door,
             IDisplay display,
             ILight light,
-            ICookController cooker)
+            ICookController cooker, IBuzzer buzzer)
         {
             powerButton.Pressed += new EventHandler(OnPowerPressed);
             timeButton.Pressed += new EventHandler(OnTimePressed);
@@ -49,11 +52,12 @@ namespace Microwave.Classes.Controllers
             myCooker = cooker;
             myLight = light;
             myDisplay = display;
+            mybuzzer = buzzer;
         }
 
         private void ResetValues()
         {
-            powerLevel = 50;
+            MaxPower = 50;
             time = 1;
         }
 
@@ -62,12 +66,12 @@ namespace Microwave.Classes.Controllers
             switch (myState)
             {
                 case States.READY:
-                    myDisplay.ShowPower(powerLevel);
+                    myDisplay.ShowPower(MaxPower);
                     myState = States.SETPOWER;
                     break;
                 case States.SETPOWER:
-                    powerLevel = (powerLevel >= 700 ? 50 : powerLevel+50);
-                    myDisplay.ShowPower(powerLevel);
+                   MaxPower = MaxPower >= 1100 ? 50 : MaxPower+50; // bare ændret 700 om til myCooker.MaxPower
+                    myDisplay.ShowPower(MaxPower);
                     break;
             }
         }
@@ -84,9 +88,11 @@ namespace Microwave.Classes.Controllers
                     time += 1;
                     myDisplay.ShowTime(time, 0);
                     break;
+
                 //case States.COOKING:
                 //    myCooker.OffsetTime(10);
                 //    break; // der tilføjes 10 sek, hvis den allerede er i gang. 
+
             }
         }
         public void OnAddTimePressed(object sender, EventArgs e)
@@ -120,7 +126,7 @@ namespace Microwave.Classes.Controllers
                     break;
                 case States.SETTIME:
                     myLight.TurnOn();
-                    myCooker.StartCooking(powerLevel, time*60);
+                    myCooker.StartCooking(MaxPower, time*60);
                     myState = States.COOKING;
                     break;
                 case States.COOKING:
@@ -181,7 +187,8 @@ namespace Microwave.Classes.Controllers
                     ResetValues();
                     myDisplay.Clear();
                     myLight.TurnOff();
-                    // Beep 3 times
+                    mybuzzer.StartAlarmBuz();
+                    
                     myState = States.READY;
                     break;
             }

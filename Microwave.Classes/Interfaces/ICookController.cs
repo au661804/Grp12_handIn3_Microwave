@@ -15,5 +15,6 @@ namespace Microwave.Classes.Interfaces
 
         void MinusTimer(int timeOffset);
         void Stop();
+        
     }
 }

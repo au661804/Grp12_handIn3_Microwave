@@ -14,6 +14,9 @@ namespace Microwave.Classes.Controllers
         private IDisplay myDisplay;
         private IPowerTube myPowerTube;
         private ITimer myTimer;
+        
+
+        // public int MaxPower => MaxPower;
 
         public CookController(
             ITimer timer,
@@ -69,6 +72,7 @@ namespace Microwave.Classes.Controllers
                 myDisplay.ShowTime(remaining / 60, remaining % 60);
             }
         }
+
         public void ChangeTime(int time)
         {
             myTimer.set(time);
@@ -81,5 +85,6 @@ namespace Microwave.Classes.Controllers
         {
             myTimer.set(myTimer.TimeRemaining - timeOffset);
         }
+
     }
 }

@@ -14,21 +14,31 @@ namespace Microwave.App
             Button AddTimeButton = new Button();
             Button subtractTimeButton = new Button();
 
+
             Door door = new Door();
 
             Output output = new Output();
 
             Display display = new Display(output);
 
-            PowerTube powerTube = new PowerTube(output);
+            PowerTube powerTube = new PowerTube(output); // opgaven siger det skal være 700
 
             Light light = new Light(output);
+
+
+            Buzzer buzzer = new Buzzer(output);
 
             Microwave.Classes.Boundary.Timer timer = new Timer();
 
             CookController cooker = new CookController(timer, display, powerTube);
 
+
             UserInterface ui = new UserInterface(powerButton, timeButton, startCancelButton, AddTimeButton, subtractTimeButton, door, display, light, cooker);
+
+            UserInterface ui = new UserInterface(powerButton, timeButton, startCancelButton, door, display, light, cooker, buzzer);
+
+            ui.MaxPower = 700;
+
 
             // Finish the double association
             cooker.UI = ui;
